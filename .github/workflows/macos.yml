@@ -22,3 +22,8 @@ jobs:
 
     - name: Build
       run: make -j4
+    - name: Upload to artifacts
+      uses: actions/upload-artifact@v4
+      with:
+          name: mac-build
+          path: EtcTool\Debug\EtcTool
