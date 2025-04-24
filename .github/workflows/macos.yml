@@ -22,6 +22,18 @@ jobs:
 
     - name: Build
       run: make -j4
+    - name: List contents of build output (recursive)
+      run: |
+        echo "== Root =="
+        ls -la
+        echo "== EtcTool =="
+        ls -la EtcTool || true
+        echo "== EtcTool/Debug =="
+        ls -la EtcTool/Debug || true
+    - name: Find all generated files
+      run: |
+        echo "Searching for built binary..."
+        find . -type f -name 'EtcTool*' -exec ls -l {} \;
     - name: Upload to artifacts
       uses: actions/upload-artifact@v4
       with:
